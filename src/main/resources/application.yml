@@ -5,10 +5,13 @@ spring:
     gateway:
       routes:
         - id: service1
-          uri: http://localhost:8081
+          uri: http://localhost:8080/api/ice1
           predicates:
             - Path=/service1/**
         - id: service2
-          uri: http://localhost:8082
+          uri: http://localhost:8080/api/ice2
           predicates:
             - Path=/service2/**
+  server:
+    netty:
+      max-http-header-size: 32768  # Increase the header size limit to 32KB
